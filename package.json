@@ -10,8 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/muwenyan521/GithubDownloadTest.git"
   },
-  "author": "ikun0014",
-  "license": "MIT",
+  "author": "muwenyan521",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/muwenyan521/GithubDownloadTest/issues"
   },
