@@ -7,12 +7,16 @@ from log import log
 
 
 def ping_url(url):
-    """Ping the given URL."""
     try:
-        response = subprocess.run(["ping", "-c", "1", url], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        return response.returncode == 0
+        for _ in range(4):
+            response = subprocess.run(["ping", "-c", "1", url], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            if response.returncode == 0:
+                log.info(f"Ping {url} 成功")
+                return True
+        log.error(f"Ping {url} 失败")
+        return False
     except Exception as e:
-        log.error(f"Ping {url} failed: {e}")
+        log.error(f"Ping {url} 发生错误: {e}")
         return False
 
 def download_file(url):
