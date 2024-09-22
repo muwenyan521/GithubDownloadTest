@@ -39,7 +39,7 @@ jobs:
         onefile: true
         show-memory: true
         windows-uac-admin: true
-        windows-icon-from-ico: icon.jpg
+        windows-icon-from-ico: icon.ico
         company-name: WangXianming
         product-name: GithubDownloadTest
         file-version: ${{ env.PACKAGE_VERSION }}
