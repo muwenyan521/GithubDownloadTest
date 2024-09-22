@@ -1,0 +1,19 @@
+{
+  "name": "GithubDownloadTest",
+  "version": "1.0.0",
+  "description": "测试Github及其镜像源文件下载",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muwenyan521/GithubDownloadTest.git"
+  },
+  "author": "ikun0014",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/muwenyan521/GithubDownloadTest/issues"
+  },
+  "homepage": "https://github.com/muwenyan521/GithubDownloadTest#readme"
+}
