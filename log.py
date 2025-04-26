@@ -1,22 +1,30 @@
 import logging
-import colorlog
 
-def init_log():
-    logger = logging.getLogger('GithubDownloadTest')
-    logger.setLevel(logging.DEBUG)
-    stream_handler = logging.StreamHandler()
-    stream_handler.setLevel(logging.DEBUG)
-    fmt_string = '%(log_color)s[%(name)s][%(levelname)s]%(message)s'
-    log_colors = {
-        'INFO': 'cyan',
-        'WARNING': 'yellow',
-        'ERROR': 'red',
-        'CRITICAL': 'purple'
+class ColorFormatter(logging.Formatter):
+    COLOR_CODES = {
+        'DEBUG': "\033[94m",    # 蓝色
+        'INFO': "\033[92m",     # 绿色
+        'WARNING': "\033[93m",  # 黄色
+        'ERROR': "\033[91m",    # 红色
+        'CRITICAL': "\033[95m", # 紫红色
     }
-    fmt = colorlog.ColoredFormatter(fmt_string, log_colors=log_colors)
-    stream_handler.setFormatter(fmt)
-    logger.addHandler(stream_handler)
-    return logger
+    RESET_CODE = "\033[0m"
 
-log = init_log()
+    def format(self, record):
+        color_code = self.COLOR_CODES.get(record.levelname, self.RESET_CODE)
+        message = super().format(record)
+        return f"{color_code}{message}{self.RESET_CODE}"
 
+# 创建Logger
+log = logging.getLogger(__name__)
+log.setLevel(logging.DEBUG)
+
+# Handler
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+
+# 设置彩色Formatter
+formatter = ColorFormatter('%(asctime)s %(levelname)s: %(message)s')
+ch.setFormatter(formatter)
+
+log.addHandler(ch)
